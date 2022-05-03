@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 const links = [
   { url: '/search', text: '🔎All', id : '1' },
   { url: '/news', text: '📰News', id : '2'  },
-  { url: '/images', text: '📰Images', id : '4'  },
   { url: '/videos', text: '📺Videos' , id : '3'  },
 ];
 
