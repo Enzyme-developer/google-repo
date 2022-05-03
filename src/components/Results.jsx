@@ -6,17 +6,15 @@ import Loading from './Loading';
 
 const Results = () => {
 
-  const { results , Imageresults , loading, getResults, searchTerm } = useResultContext();
+  const { results , loading, getResults, searchTerm } = useResultContext();
   const location = useLocation();
 
   useEffect(() => {
     if (searchTerm !== '') {
       if (location.pathname === '/videos') {
         getResults(`/search/q=${searchTerm} videos`);
-      } else if (location.pathname === '/videos') {
-        getResults(`${location.pathname}/q=${searchTerm}}&num=40`);
       } else {
-        getResults(`/search/q=${searchTerm} images`);
+        getResults(`${location.pathname}/q=${searchTerm}}&num=50`);
       }
     }
   }, [searchTerm, location.pathname]);
@@ -27,7 +25,7 @@ const Results = () => {
   switch (location.pathname) {
       case '/search':
         return (
-          <div className="sm:px-56 flex flex-wrap justify-between space-y-6">
+          <div className="p-3 sm:px-56 flex flex-wrap justify-between space-y-6">
             {results?.map(({ link, title }, index) => (
               <div key={index} className="md:w-2/5 w-full">
                 <a href={link} target="_blank" rel="noreferrer">
@@ -41,7 +39,7 @@ const Results = () => {
 
         case '/news':
           return (
-            <div className="sm:px-56 flex flex-wrap justify-between items-center space-y-6">
+            <div className="p-3 sm:px-56 flex flex-wrap justify-between items-center space-y-6">
               {results?.map(({ id, links, source, title }) => (
                 <div key={id} className="md:w-2/5 w-full ">
                   <a href={links?.[0].href} target="_blank" rel="noreferrer " className="hover:underline ">
@@ -59,7 +57,7 @@ const Results = () => {
         
       case '/videos':
         return (
-          <div className="flex flex-wrap px-4 w-full justify-center">
+          <div className="p-3 flex flex-wrap px-4 w-full justify-center">
             {results.map((video, index) => (
               <div key={index} className="p-2">
                {video?.additional_links?.[0]?.href && 
