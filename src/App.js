@@ -1,7 +1,9 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Routes from './components/Routes';
+import News from './components/News';
+import Videos from './components/Videos';
+import All from './components/All';
 import { useState } from 'react';
 import { Switch ,Route , Redirect} from 'react-router-dom';
 import Results from './components/Results';
@@ -17,13 +19,13 @@ function App() {
           <Redirect to='/search' />
         </Route>
         <Route path={'/search'} >
-           <Results />
+           <All />
         </Route>
         <Route path={'/news'} >
-           <Results />
+           <News />
         </Route>
         <Route path={'/videos'} >
-           <Results />
+           <Videos />
         </Route>
       </Switch>
         <Footer />

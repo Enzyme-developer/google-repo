@@ -10,14 +10,15 @@ export const ResultContextProvider = ( {children }) => {
 
     const getResults = async (type) => {
         setLoading(true)
+        
 
         const response = await fetch(`${baseUrl}${type}` , {
-            method : 'GET' , 
-            headers : {
+            method: 'GET',
+            headers: {
                 'X-User-Agent': 'desktop',
                 'X-Proxy-Location': 'EU',
                 'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
-                'X-RapidAPI-Key': 'e4a857be5cmsh09ebc54b46beaa4p127d24jsnd3c58aaa2a16'
+                'X-RapidAPI-Key': 'b2b12a9ea8mshd7d8bab3728d3cap16f358jsn1ecd8933f732'
             }
         });
 
