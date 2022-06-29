@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const links = [
   { url: '/search', text: '🔎All', id : '1' },
   { url: '/news', text: '📰News', id: '2' },
-  { url: '/image', text: '📷Images' , id : '3'  },
+ 
   { url: '/videos', text: '📺Videos' , id : '4'  }
 ];
 
@@ -19,6 +19,7 @@ const Links = () => (
         {text}
       </Link>
     ))}
+    <button onClick={() => window.location.reload(false)}><Link to='/image'>📷Image</Link> </button>
 
   </div>
 );
