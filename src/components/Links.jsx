@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 const links = [
   { url: '/search', text: '🔎All', id : '1' },
   { url: '/news', text: '📰News', id: '2' },
- 
-  { url: '/videos', text: '📺Videos' , id : '4'  }
+  { url: '/videos', text: '📺Videos' , id : '3'  }
 ];
 
 //map through data and display links
@@ -19,7 +18,6 @@ const Links = () => (
         {text}
       </Link>
     ))}
-    <button onClick={() => window.location.reload(false)}><Link to='/image'>📷Image</Link> </button>
 
   </div>
 );
