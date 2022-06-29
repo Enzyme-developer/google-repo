@@ -1,6 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 
+//create loader to show user data is being fetched
 const Loading = () => {
   return (
     <div className='flex justify-center item-center'>

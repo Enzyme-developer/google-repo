@@ -1,37 +1,37 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import News from './components/News';
-import Videos from './components/Videos';
-import All from './components/All';
 import { useState } from 'react';
-import { Switch ,Route , Redirect} from 'react-router-dom';
-import Results from './components/Results';
+import { Routes ,Route , Navigate} from 'react-router-dom';
+import Footer from './components/Footer';
+import All from './components/All'
+import News from './components/News'
+import Videos from './components/Videos'
+import Images from './components/Images'
 
 function App() {
-  const [darkTheme , setDarkTheme ] = useState(false);
-    return (
-    <div className={darkTheme ? 'dark' : ''}>
-      <div className='bg-gray-100 dark:bg-gray-900 dark:text-grey-200 min-h-screen'>
-        <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-        <Switch>
-        <Route exact path='/'>
-          <Redirect to='/search' />
-        </Route>
-        <Route path={'/search'} >
-           <All />
-        </Route>
-        <Route path={'/news'} >
-           <News />
-        </Route>
-        <Route path={'/videos'} >
-           <Videos />
-        </Route>
-      </Switch>
-        <Footer />
-      </div>
-    </div>
-  );
+  //state for Theme
+  const [darkTheme, setDarkTheme] = useState(false);
+  
+return (
+  <div className={darkTheme ? 'dark' : ''}>
+  <div className='bg-gray-100 dark:bg-gray-900 dark:text-grey-200 min-h-screen'>
+    {/* pass state into navbar component */}
+    <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+    <Routes>
+      {/* <Route path='/'>
+      <Navigate to="/search" replace={true} />
+      </Route>     */}
+      <Route path={'/search'} element={<All/>} />
+      <Route path={'/news'} element={<News />} />
+      <Route path={'/videos'} element={<Videos />} />
+      <Route path={'/image'} element={<Images />} />
+      
+    </Routes>
+    <h1 className='text-center p-4'>Click any of the Above options</h1>
+    <Footer />
+  </div>
+</div>
+  )
 }
 
 export default App;

@@ -3,7 +3,8 @@ import  { useLocation } from 'react-router-dom';
 import { useResultContext } from '../context/ResultContextProvider';
 import Loading from './Loading';
 
-const News = () => {
+const Images = () => {
+
 
     const { results, loading, getResults, searchTerm } = useResultContext();
     const location = useLocation();
@@ -23,17 +24,14 @@ const News = () => {
 
 
     return (
-        <div className="p-3 sm:px-56 flex flex-wrap justify-between space-y-6">
-            {results?.map(({ link, title }, index) => (
-                <div key={index} className="md:w-2/5 w-full">
-                    <a href={link} target="_blank" rel="noreferrer">
-                        <p className="text-sm dark:text-white">{link.length > 30 ? link.substring(0, 30) : link}</p>
-                        <p className="text-lg hover:underline dark:text-blue-300 text-blue-700  ">{title}</p>
-                    </a>
-                </div>
-            ))}
+        <div className=" flex flex-wrap justify-center w-full">
+          {results?.map((result, index) => (
+            <div key={index} className="flex flex-wrap">
+              <img alt={searchTerm} src={result.image.src} className='w-full aspect-auto p-3' />
+            </div>
+          ))}
         </div>
-    )
+      );
 }
     
-export default News
+export default Images

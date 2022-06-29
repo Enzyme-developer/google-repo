@@ -10,33 +10,34 @@ export const ResultContextProvider = ( {children }) => {
 
     const getResults = async (type) => {
         setLoading(true)
-        
-
-        const response = await fetch(`${baseUrl}${type}` , {
+        const options = {
             method: 'GET',
             headers: {
                 'X-User-Agent': 'desktop',
-                'X-Proxy-Location': 'EU',
-                'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
-                'X-RapidAPI-Key': 'b2b12a9ea8mshd7d8bab3728d3cap16f358jsn1ecd8933f732'
+                'X-Proxy-Location': 'US',
+                'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
+                'X-RapidAPI-Host': 'google-search3.p.rapidapi.com'
             }
-        });
-
+        };
+        
+        const response = await fetch(`${baseUrl}${type}`, options)
         const data = await response.json();
+        //make the function work for all cases by checking the type
 
-        if(type.includes('/news')){
-            setResults(data.entries);
+        if (type.includes('/news')) {
+            setResults(data.entries)
+        } else if (type.includes('/image')) {
+            setResults(data.image_results)
         } else {
-            setResults(data.results);
-        }
-
-        console.log( {type, data} )
+            setResults(data.results)
+        } 
 
         setLoading(false);
 
     }
+    
     return (
-        <ResultContext.Provider value={ { getResults , results , searchTerm , setSearchTerm , loading } }>
+        <ResultContext.Provider value= { { getResults , results , searchTerm , setSearchTerm , loading } } >
             {children}
         </ResultContext.Provider>
     )
