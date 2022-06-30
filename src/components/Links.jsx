@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 //create array for links
 const links = [
@@ -12,14 +12,13 @@ const links = [
 const Links = () => (
   <div className="flex sm:justify-between  justify-center items-center mt-3 w-full">
 
-    {links.map(({ url, text ,id}) => (
-      <Link to={url} key={id} activeClassName="text-blue-700 border-b-2 dark:text-blue-300 border-blue-700 pb-2 px-1" 
-        className='px-3 mb-0 dark:text-gray-100'>
-        {text}
-      </Link>
-    ))}
+  {links.map(({ url, text ,id}) => (
+    <NavLink to={url} key={id} activeClassName="text-blue-700 border-b-2 dark:text-blue-300 border-blue-700 pb-2 px-1" 
+      className='px-3 mb-0 dark:text-gray-100'>
+      {text}
+    </NavLink>
+  ))}
 
   </div>
-);
-
+)
 export default Links;

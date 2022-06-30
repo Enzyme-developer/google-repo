@@ -13,6 +13,7 @@ const Search = () => {
     if (debouncedValue) {
       setSearchTerm(debouncedValue)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedValue]);
 
   return (
@@ -26,21 +27,19 @@ const Search = () => {
         onChange={(e) => setText(e.target.value)}
       />  
         
-      {text !== '' && (
-        <button type="button" 
-        // className="absolute top-1.5 right-4 text-2xl text-gray-500 dark:text-gray-100" 
-        className='text-3xl text-gray-500 dark:text-gray-100 ml-5'
-        onClick={() => setText('')}>
-          x
-        </button>
-        
-      )}
-      </div>
+    {text !== '' && (
+      <button type="button"  
+      className='text-3xl text-gray-500 dark:text-gray-100 ml-5'
+      onClick={() => setText('')}>
+        x
+      </button>
       
-      <Links />
+    )}
     </div>
-  );
-  
-};
+      
+    <Links />
+  </div>
+  )
+}
 
 export default Search;
